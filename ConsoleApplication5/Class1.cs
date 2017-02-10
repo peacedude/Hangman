@@ -11,9 +11,10 @@ namespace ConsoleApplication5
         public void GetMenu()
         {
             Console.Clear();
-            Console.WriteLine("1. Start Gane");
+            Console.WriteLine("1. Start Gane (TBD)");
             Console.WriteLine("2. Add Word");
-            Console.WriteLine("3. Quit");
+            Console.WriteLine("3. Highscores (TBD)");
+            Console.WriteLine("4. Quit");
             bool loop = true;
             while (loop == true)
             {
@@ -27,9 +28,10 @@ namespace ConsoleApplication5
                         loop = false;
                         break;
                     case ConsoleKey.D3:
-                        loop = false;
+                        
                         break;
                     case ConsoleKey.D4:
+                        loop = false;
                         break;
                 }
             }
