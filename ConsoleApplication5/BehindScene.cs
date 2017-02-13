@@ -14,9 +14,9 @@ namespace ConsoleApplication5
         public static void GetMenu()
         {
             Console.Clear();
-            Console.WriteLine("1. Start Gane (TBD)");
+            Console.WriteLine("1. Start Game (TBD)");
             Console.WriteLine("2. Add Word");
-            Console.WriteLine("3. Highscores (TBD)");
+            Console.WriteLine("3. Highscores");
             Console.WriteLine("4. Quit");
             bool loop = true;
             while (loop == true)
@@ -24,16 +24,20 @@ namespace ConsoleApplication5
                 switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.D1:
+                        //Play the game
                         break;
                     case ConsoleKey.D2:
+                        //Add new word to list
                         Console.Clear();
                         NewWordC.AddNewWord();
                         loop = false;
                         break;
                     case ConsoleKey.D3:
-
+                        //Show highscores
+                        GetHighScores();
                         break;
                     case ConsoleKey.D4:
+                        //Quit
                         loop = false;
                         break;
                     default:
@@ -41,32 +45,20 @@ namespace ConsoleApplication5
                 }
             }
         }
-        /*public void AddNewWord()
+        private static void GetHighScores()
         {
-            bool loop = true;
-            while (loop == true)
+            int xx = 1;
+            string filename = @"resources\scores.txt";
+            Console.Clear();
+            List<string> scoreList = File.ReadAllLines(filename).ToList();
+            foreach (string oneScore in scoreList)
             {
-                Console.Clear();
-                Console.Write("Enter a word to add it: ");
-            string word = Console.ReadLine();
-
-                if (String.IsNullOrEmpty(word) || word.Any(char.IsDigit))
-                {
-                    Console.Write("Enter a valid word. Press any key to enter a new word...");
-                    Console.ReadKey(true);
-                }
-                else
-                {
-                    using (System.IO.StreamWriter file =
-                    new System.IO.StreamWriter(path, true))
-                    {
-                        file.WriteLine("\n" + word);
-                    }
-                    loop = false;
-                    GetMenu();
-                }
+                Console.WriteLine(xx.ToString() + ". " + oneScore);
+                xx++;
             }
-
-        }*/
+            Console.WriteLine("\nPress any key to go back to menu...");
+            Console.ReadKey(true);
+            GetMenu();
+        }
     }
 }
