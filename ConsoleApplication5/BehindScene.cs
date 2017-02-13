@@ -40,7 +40,7 @@ namespace ConsoleApplication5
                         break;
                     case ConsoleKey.D4:
                         //Quit
-                        loop = false;
+                        Environment.Exit(0);
                         break;
                     default:
                         break;
