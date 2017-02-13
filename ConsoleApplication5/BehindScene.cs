@@ -21,6 +21,7 @@ namespace ConsoleApplication5
             bool loop = true;
             while (loop == true)
             {
+                //Wait for userinput to continue
                 switch (Console.ReadKey(true).Key)
                 {
                     case ConsoleKey.D1:
@@ -48,6 +49,7 @@ namespace ConsoleApplication5
         }
         private static void GetHighScores()
         {
+            //Get highscores from the file scores.txt
             int xx = 1;
             string filename = @"resources\scores.txt";
             Console.Clear();

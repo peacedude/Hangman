@@ -15,10 +15,12 @@ namespace ConsoleApplication5
             bool loop = true;
             while (loop == true)
             {
+                //Wait for user to add a word into words.txt.
                 Console.Clear();
                 Console.Write("Enter a word to add it or type 'Back' to go back to menu: ");
                 string word = Console.ReadLine().ToUpper();
 
+                //Gives user an error if the input is NULL, Whitespace, contains a number or contains a whitespace
                 if (String.IsNullOrEmpty(word) || word.Any(char.IsDigit) || String.IsNullOrWhiteSpace(word) || word.Contains(' '))
                 {
                     Console.Write("Enter a valid word. Press any key to enter a new word...");

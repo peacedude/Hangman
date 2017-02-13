@@ -16,12 +16,14 @@ namespace ConsoleApplication5
             Console.WriteLine("Welcome to the Hangman");
             Random rnd = new Random((int)DateTime.Now.Ticks);
             string filename = @"resources\words.txt";
+            //Convert words.txt into a list then into an array
             List<string> wordList = File.ReadAllLines(filename).ToList();
             string[] wordBank = wordList.ToArray();
 
             string wordToGuess = wordBank[rnd.Next(0, wordBank.Length)];
             string wordToGuessUpperCase = wordToGuess.ToUpper();
 
+            //Show user how many letters the word contains with '_'
             StringBuilder displayToPlayer = new StringBuilder(wordToGuess.Length);
             for (int i = 0; i < wordToGuess.Length; i++)
             {
@@ -46,6 +48,7 @@ namespace ConsoleApplication5
                 input = Console.ReadLine().ToUpper();
                 guess = input[0];
 
+                //Gives user feedback when they enter a letter that has already been entered.
                 if (correctGuesses.Contains(guess))
                 {
                     Console.WriteLine("You've already tried '{0}', and it was correct.\n", guess);
@@ -56,6 +59,7 @@ namespace ConsoleApplication5
                     Console.WriteLine("You've already tried '{0}', and it was wrong.\n", guess);
                     continue;
                 }
+                //Reveals a letter to the user if the guess is correct.
                 if (wordToGuessUpperCase.Contains(guess))
                 {
                     correctGuesses.Add(guess);
@@ -73,6 +77,7 @@ namespace ConsoleApplication5
                     }
                 }
                 else
+                //If the guess is not correct the user recieves feedback.
                 {
                     incorrectGuesses.Add(guess);
                     Console.Clear();
@@ -83,6 +88,7 @@ namespace ConsoleApplication5
                 Console.WriteLine(displayToPlayer.ToString());
 
             }
+            //If the user wins they get to add a name to scores.txt and if they lose it takes them to the menu. 
             if (won)
             {
                 Console.Write("\nYou won!\nEnter your name to add it to the highscore list: ");
@@ -99,6 +105,7 @@ namespace ConsoleApplication5
         }
         private static void New_Score(int score, string name)
         {
+            //Adds the inputed name to scores.txt with the amount of lives remaining and sorts it from most lives to the least remaining.
             string filename = @"resources\scores.txt";
             List<string> scoreList;
             if (File.Exists(filename))
