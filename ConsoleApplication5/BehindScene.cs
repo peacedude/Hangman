@@ -14,7 +14,7 @@ namespace ConsoleApplication5
         public static void GetMenu()
         {
             Console.Clear();
-            Console.WriteLine("1. Start Game (TBD)");
+            Console.WriteLine("1. Start Game");
             Console.WriteLine("2. Add Word");
             Console.WriteLine("3. Highscores");
             Console.WriteLine("4. Quit");
@@ -25,6 +25,7 @@ namespace ConsoleApplication5
                 {
                     case ConsoleKey.D1:
                         //Play the game
+                        Game.StartGame();
                         break;
                     case ConsoleKey.D2:
                         //Add new word to list

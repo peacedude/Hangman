@@ -16,14 +16,20 @@ namespace ConsoleApplication5
             while (loop == true)
             {
                 Console.Clear();
-                Console.Write("Enter a word to add it: ");
-                string word = Console.ReadLine();
+                Console.Write("Enter a word to add it or type 'Back' to go back to menu: ");
+                string word = Console.ReadLine().ToUpper();
 
-                if (String.IsNullOrEmpty(word) || word.Any(char.IsDigit) || String.IsNullOrWhiteSpace(word))
+                if (String.IsNullOrEmpty(word) || word.Any(char.IsDigit) || String.IsNullOrWhiteSpace(word) || word.Contains(' '))
                 {
                     Console.Write("Enter a valid word. Press any key to enter a new word...");
                     Console.ReadKey(true);
                 }
+                else if (word == "BACK")
+                {
+                    loop = false;
+                    BehindScene.GetMenu();
+                }
+                    
                 else
                 {
                     using (System.IO.StreamWriter file =
@@ -31,6 +37,7 @@ namespace ConsoleApplication5
                     {
                         file.WriteLine("\n" + word);
                     }
+
                     loop = false;
                     BehindScene.GetMenu();
                 }
